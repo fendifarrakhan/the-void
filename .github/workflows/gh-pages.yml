@@ -1,0 +1,31 @@
+name: Deploy static site to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js (for optional tooling)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Build (noop for static sites)
+        run: echo "No build step configured; add build commands here if needed"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Change this to publish a specific folder such as '3den' or 'the-void/dominic\'s portfolio/source/html'
+          publish_dir: ./3den
+
+      # Notes for maintainers:
+      # - To publish a different folder, update `publish_dir` to the desired path relative to the repo root.
+      # - The action uses the built-in GITHUB_TOKEN. For custom domains or extra permissions, configure a personal access token.
