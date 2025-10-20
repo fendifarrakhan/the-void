@@ -126,3 +126,38 @@ input[type=submit] {
 .btn:hover {
     background-color: #334155; /* Darker Slate Grey */
 }
+
+/* Carousel Styles */
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: 150px; /* Adjust height as needed */
+}
+
+.carousel-track {
+    display: flex;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+}
+
+.carousel-container:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+.carousel-item {
+    width: 200px; /* Adjust width as needed */
+    height: 150px; /* Adjust height as needed */
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
